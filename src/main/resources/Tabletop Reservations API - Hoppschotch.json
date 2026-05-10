@@ -1,0 +1,1868 @@
+{
+  "v": 11,
+  "name": "Tabletop Reservations API",
+  "folders": [
+    {
+      "v": 11,
+      "name": "01. Users - (Admin)",
+      "folders": [],
+      "requests": [
+        {
+          "v": "17",
+          "name": "Register Player 1",
+          "method": "POST",
+          "endpoint": "<<baseUrl>>/rest/users/register",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 201 \npw.test(\"Status code is 201\", () => {\n    pw.expect(pw.response.status).toBe(201);\n});",
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n  \"firstName\": \"Test\",\n  \"lastName\": \"Player\",\n  \"email\": \"<<playerEmail>>\",\n  \"password\": \"<<playerPassword>>\",\n  \"role\": \"PLAYER\"\n}\n"
+          },
+          "requestVariables": [
+            {
+              "key": "s",
+              "value": "s",
+              "active": true
+            }
+          ],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Register Player 2",
+          "method": "POST",
+          "endpoint": "<<baseUrl>>/rest/users/register",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 201 \npw.test(\"Status code is 201\", () => {\n    pw.expect(pw.response.status).toBe(201);\n});",
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n  \"firstName\": \"Test2\",\n  \"lastName\": \"Player2\",\n  \"email\": \"2<<playerEmail>>\",\n  \"password\": \"<<playerPassword>>\",\n  \"role\": \"PLAYER\"\n}\n"
+          },
+          "requestVariables": [
+            {
+              "key": "s",
+              "value": "s",
+              "active": true
+            }
+          ],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Register Provider",
+          "method": "POST",
+          "endpoint": "<<baseUrl>>/rest/users/register",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 201       \npw.test(\"Status code is 201\", () => {\n    pw.expect(pw.response.status).toBe(201);\n});",
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n  \"firstName\": \"Test\",\n  \"lastName\": \"Provider\",\n  \"email\": \"<<providerEmail>>\",\n  \"password\": \"<<providerPassword>>\",\n  \"role\": \"PROVIDER\"\n}"
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Attempt to register as Admin",
+          "method": "POST",
+          "endpoint": "<<baseUrl>>/rest/users/register",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 400   \npw.test(\"Status code is 400\", () => {\n    pw.expect(pw.response.status).toBe(400);\n});",
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n  \"firstName\": \"Test\",\n  \"lastName\": \"Admin\",\n  \"email\": \"<<adminEmail>>\",\n  \"password\": \"<<adminPassword>>\",\n  \"role\": \"ADMIN\"\n}"
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Attempt to re-register",
+          "method": "POST",
+          "endpoint": "<<baseUrl>>/rest/users/register",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 400   \npw.test(\"Status code is 400\", ()=> {\n    pw.expect(pw.response.status).toBe(400);\n});",
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n  \"firstName\": \"Test\",\n  \"lastName\": \"Player\",\n  \"email\": \"<<playerEmail>>\",\n  \"password\": \"<<playerPassword>>\",\n  \"role\": \"PLAYER\"\n}"
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Direct Create Admin User - (Admin)",
+          "method": "POST",
+          "endpoint": "<<baseUrl>>/rest/users",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 201 \npw.test(\"Status code is 201\", () => {\n    pw.expect(pw.response.status).toBe(201);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<adminEmail>>",
+            "password": "<<adminPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n  \"firstName\": \"Direct\",\n  \"lastName\": \"User\",\n  \"email\": \"direct@test.com\",\n  \"password\": \"direct\",\n  \"role\": \"ADMIN\",\n  \"active\": true\n}"
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Update Player 1 - (Admin)",
+          "method": "PUT",
+          "endpoint": "<<baseUrl>>/rest/users/2",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 200   \npw.test(\"Status code is 200\", () => {\n    pw.expect(pw.response.status).toBe(200);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<adminEmail>>",
+            "password": "<<adminPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n  \"firstName\": \"Test Updated\",\n  \"lastName\": \"Player\",\n  \"email\": \"<<playerEmail>>\",\n  \"password\": \"<<playerPassword>>\"\n}\n"
+          },
+          "requestVariables": [
+            {
+              "key": "s",
+              "value": "s",
+              "active": true
+            }
+          ],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Delete Player 2 - (Admin)",
+          "method": "DELETE",
+          "endpoint": "<<baseUrl>>/rest/users/3",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 204       \npw.test(\"Status code is 204\", () => {\n    pw.expect(pw.response.status).toBe(204);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<adminEmail>>",
+            "password": "<<adminPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n  \"firstName\": \"Test2 Updated\",\n  \"lastName\": \"Player2\",\n  \"email\": \"2<<playerEmail>>\",\n  \"password\": \"<<playerPassword>>\"\n}\n"
+          },
+          "requestVariables": [
+            {
+              "key": "s",
+              "value": "s",
+              "active": true
+            }
+          ],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Get All Users - (Admin)",
+          "method": "GET",
+          "endpoint": "<<baseUrl>>/rest/users",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 200   \npw.test(\"Status code is 200\", () => {\n    pw.expect(pw.response.status).toBe(200);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<adminEmail>>",
+            "password": "<<adminPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Get User by ID",
+          "method": "GET",
+          "endpoint": "<<baseUrl>>/rest/users/1",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 200   \npw.test(\"Status code is 200\", () => {\n    pw.expect(pw.response.status).toBe(200);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<adminEmail>>",
+            "password": "<<adminPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        }
+      ],
+      "auth": {
+        "authType": "inherit",
+        "authActive": true
+      },
+      "headers": [],
+      "variables": [],
+      "description": null
+    },
+    {
+      "v": 11,
+      "name": "02. Venues",
+      "folders": [],
+      "requests": [
+        {
+          "v": "17",
+          "name": "Create Venue 1 - (Provider)",
+          "method": "POST",
+          "endpoint": "<<baseUrl>>/rest/venues",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 201 \npw.test(\"Status code is 201\", () => {\n    pw.expect(pw.response.status).toBe(201);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<providerEmail>>",
+            "password": "<<providerPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n    \"name\": \"Test Venue\",\n    \"street\": \"Test St.\",\n    \"city\": \"TestCity\",\n    \"postalCode\": \"11111\",\n    \"country\": \"CZ\",\n    \"ownerId\": 2\n}"
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Create Venue 2 - (Provider)",
+          "method": "POST",
+          "endpoint": "<<baseUrl>>/rest/venues",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 201 \npw.test(\"Status code is 201\", () => {\n    pw.expect(pw.response.status).toBe(201);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<providerEmail>>",
+            "password": "<<providerPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n    \"name\": \"Test Venue 2\",\n    \"street\": \"Test St. 2\",\n    \"city\": \"TestCity 2\",\n    \"postalCode\": \"111112\",\n    \"country\": \"SK\",\n    \"ownerId\": 1\n}"
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Update Venue 1 - (Provider)",
+          "method": "PUT",
+          "endpoint": "<<baseUrl>>/rest/venues/1",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 200   \npw.test(\"Status code is 200\", () => {\n    pw.expect(pw.response.status).toBe(200);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<providerEmail>>",
+            "password": "<<providerPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n    \"name\": \"Test Venue Renamed\",\n    \"street\": \"Test St.\",\n    \"city\": \"TestCity\",\n    \"postalCode\": \"11111\",\n    \"country\": \"CZ\",\n    \"ownerId\": 2\n}"
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Delete Venue 2 - (Provider)",
+          "method": "DELETE",
+          "endpoint": "<<baseUrl>>/rest/venues/2",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 204       \npw.test(\"Status code is 204\", () => {\n    pw.expect(pw.response.status).toBe(204);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<providerEmail>>",
+            "password": "<<providerPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Search Venue ID by City",
+          "method": "GET",
+          "endpoint": "<<baseUrl>>/rest/venues/search",
+          "params": [
+            {
+              "key": "city",
+              "value": "TestCity",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 200   \npw.test(\"Status code is 200\", () => {\n    pw.expect(pw.response.status).toBe(200);\n});",
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        }
+      ],
+      "auth": {
+        "authType": "inherit",
+        "authActive": true
+      },
+      "headers": [],
+      "variables": [],
+      "description": null
+    },
+    {
+      "v": 11,
+      "name": "03. Desk Games",
+      "folders": [],
+      "requests": [
+        {
+          "v": "17",
+          "name": "Create Game 1 - (Admin)",
+          "method": "POST",
+          "endpoint": "<<baseUrl>>/rest/deskgames",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 201 \npw.test(\"Status code is 201\", () => {\n    pw.expect(pw.response.status).toBe(201);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<adminEmail>>",
+            "password": "<<adminPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n    \"title\": \"Catan\",\n    \"publisher\": \"Kosmos\",\n    \"minPlayers\": 3,\n    \"maxPlayers\": 4,\n    \"averagePlaytimeMinutes\": 90,\n    \"categories\": []\n}"
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Create Game 2 - (Admin)",
+          "method": "POST",
+          "endpoint": "<<baseUrl>>/rest/deskgames",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 201 \npw.test(\"Status code is 201\", () => {\n    pw.expect(pw.response.status).toBe(201);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<adminEmail>>",
+            "password": "<<adminPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n    \"title\": \"Bang\",\n    \"publisher\": \"Brnaci\",\n    \"minPlayers\": 4,\n    \"maxPlayers\": 8,\n    \"averagePlaytimeMinutes\": 120,\n    \"categories\": []\n}"
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Add Desk Game  to Venue - (Provider)",
+          "method": "POST",
+          "endpoint": "<<baseUrl>>/rest/venues/1/deskgames",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 201 \npw.test(\"Status code is 201\", () => {\n    pw.expect(pw.response.status).toBe(201);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<providerEmail>>",
+            "password": "<<providerPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n    \"quantity\": 3,\n    \"deskGameId\": 1\n}"
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Update Game 1 - (Admin)",
+          "method": "PUT",
+          "endpoint": "<<baseUrl>>/rest/deskgames/1",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 200   \npw.test(\"Status code is 200\", () => {\n    pw.expect(pw.response.status).toBe(200);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<adminEmail>>",
+            "password": "<<adminPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n    \"title\": \"Bang!\",\n    \"publisher\": \"Prazaci\",\n    \"minPlayers\": 4,\n    \"maxPlayers\": 9,\n    \"averagePlaytimeMinutes\": 990,\n    \"categories\": []\n}"
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Delete Game 2 - (Admin) ",
+          "method": "DELETE",
+          "endpoint": "<<baseUrl>>/rest/deskgames/2",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 204       \npw.test(\"Status code is 204\", () => {\n    pw.expect(pw.response.status).toBe(204);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<adminEmail>>",
+            "password": "<<adminPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Get Game Categories",
+          "method": "GET",
+          "endpoint": "<<baseUrl>>/rest/deskgames/1/categories",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 200   \npw.test(\"Status code is 200\", () => {\n    pw.expect(pw.response.status).toBe(200);\n});",
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Search Desk Game ID",
+          "method": "GET",
+          "endpoint": "<<baseUrl>>/rest/deskgames/search",
+          "params": [
+            {
+              "key": "title",
+              "value": "Catan",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 200   \npw.test(\"Status code is 200\", () => {\n    pw.expect(pw.response.status).toBe(200);\n});",
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        }
+      ],
+      "auth": {
+        "authType": "inherit",
+        "authActive": true
+      },
+      "headers": [],
+      "variables": [],
+      "description": null
+    },
+    {
+      "v": 11,
+      "name": "04. Categories",
+      "folders": [],
+      "requests": [
+        {
+          "v": "17",
+          "name": "Create Category 1 - (Admin)",
+          "method": "POST",
+          "endpoint": "<<baseUrl>>/rest/categories",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 201 \npw.test(\"Status code is 201\", () => {\n    pw.expect(pw.response.status).toBe(201);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<adminEmail>>",
+            "password": "<<adminPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n  \"name\": \"Strategy\"\n}\n"
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Create Category 2 - (Admin)",
+          "method": "POST",
+          "endpoint": "<<baseUrl>>/rest/categories",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 201 \npw.test(\"Status code is 201\", () => {\n    pw.expect(pw.response.status).toBe(201);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<adminEmail>>",
+            "password": "<<adminPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n  \"name\": \"Action\"\n}\n"
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Add Category to Game - (Admin)",
+          "method": "PUT",
+          "endpoint": "<<baseUrl>>/rest/deskgames/1/categories/1",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 200   \npw.test(\"Status code is 200\", () => {\n    pw.expect(pw.response.status).toBe(200);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<adminEmail>>",
+            "password": "<<adminPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Update Category 1 - (Admin)",
+          "method": "PUT",
+          "endpoint": "<<baseUrl>>/rest/categories/1",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 200   \npw.test(\"Status code is 200\", () => {\n    pw.expect(pw.response.status).toBe(200);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<adminEmail>>",
+            "password": "<<adminPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n    \"name\": \"Advanced Strategy\"\n}"
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Delete Category 2 - (Admin)",
+          "method": "DELETE",
+          "endpoint": "<<baseUrl>>/rest/categories/2",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 204       \npw.test(\"Status code is 204\", () => {\n    pw.expect(pw.response.status).toBe(204);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<adminEmail>>",
+            "password": "<<adminPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Get All Categories ",
+          "method": "GET",
+          "endpoint": "<<baseUrl>>/rest/categories",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 200   \npw.test(\"Status code is 200\", () => {\n    pw.expect(pw.response.status).toBe(200);\n});",
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        }
+      ],
+      "auth": {
+        "authType": "inherit",
+        "authActive": true
+      },
+      "headers": [],
+      "variables": [],
+      "description": null
+    },
+    {
+      "v": 11,
+      "name": "05. Game Tables",
+      "folders": [],
+      "requests": [
+        {
+          "v": "17",
+          "name": "Create Game Table - (Provider)",
+          "method": "POST",
+          "endpoint": "<<baseUrl>>/rest/gametables",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 200   \npw.test(\"Status code is 200\", () => {\n    pw.expect(pw.response.status).toBe(200);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<providerEmail>>",
+            "password": "<<providerPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n    \"name\": \"Table 1\",\n    \"capacity\": 6,\n  \t\"venueId\": 1\n}"
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Assign Game Table to Venue - (Provider)",
+          "method": "PUT",
+          "endpoint": "<<baseUrl>>/rest/venues/1/gametables",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 200               \npw.test(\"Status code is 200\", () => {\n    pw.expect(pw.response.status).toBe(200);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<providerEmail>>",
+            "password": "<<providerPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "[1]"
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Update GameTable - (Provider)",
+          "method": "PUT",
+          "endpoint": "<<baseUrl>>/rest/gametables/1",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 200   \npw.test(\"Status code is 200\", () => {\n    pw.expect(pw.response.status).toBe(200);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<providerEmail>>",
+            "password": "<<providerPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n    \"name\": \"Table 1 Renamed\",\n    \"capacity\": 7\n}"
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Get Table IDs in Venue",
+          "method": "GET",
+          "endpoint": "<<baseUrl>>/rest/venues/1/gametables",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 200   \npw.test(\"Status code is 200\", () => {\n    pw.expect(pw.response.status).toBe(200);\n});",
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        }
+      ],
+      "auth": {
+        "authType": "inherit",
+        "authActive": true
+      },
+      "headers": [],
+      "variables": [],
+      "description": null
+    },
+    {
+      "v": 11,
+      "name": "06. Time Slots",
+      "folders": [],
+      "requests": [
+        {
+          "v": "17",
+          "name": "Create Time Slot 1 - (Provider)",
+          "method": "POST",
+          "endpoint": "<<baseUrl>>/rest/timeslots",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 201 \npw.test(\"Status code is 201\", () => {\n    pw.expect(pw.response.status).toBe(201);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<providerEmail>>",
+            "password": "<<providerPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n  \"startTime\": \"09:00:00\",\n  \"endTime\": \"10:30:00\",\n  \"gameTableId\": 1\n}\n"
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Create Time Slot 2 - (Provider)",
+          "method": "POST",
+          "endpoint": "<<baseUrl>>/rest/timeslots",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 201 \npw.test(\"Status code is 201\", () => {\n    pw.expect(pw.response.status).toBe(201);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<providerEmail>>",
+            "password": "<<providerPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n  \"startTime\": \"02:00:00\",\n  \"endTime\": \"05:45:00\",\n  \"gameTableId\": 1\n}\n"
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Create Time Slots in Bulk - (Provider)",
+          "method": "POST",
+          "endpoint": "<<baseUrl>>/rest/timeslots/bulk",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 201 \npw.test(\"Status code is 201\", ()=> {\n    pw.expect(pw.response.status).toBe(201);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<providerEmail>>",
+            "password": "<<providerPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n  \"startTime\": \"18:00:00\",\n  \"endTime\": \"22:00:00\",\n  \"venueId\": 1\n}\n"
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Add TimeSlot to Table - (Provider)",
+          "method": "POST",
+          "endpoint": "<<baseUrl>>/rest/gametables/1/timeslots",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 200   \npw.test(\"Status code is 200\", () => {\n    pw.expect(pw.response.status).toBe(200);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<providerEmail>>",
+            "password": "<<providerPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n    \"startTime\": \"14:00:00\",\n    \"endTime\": \"16:00:00\"\n}"
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Update Time Slot - (Provider)",
+          "method": "PUT",
+          "endpoint": "<<baseUrl>>/rest/timeslots/1",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 200   \npw.test(\"Status code is 200\", () => {\n    pw.expect(pw.response.status).toBe(200);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<providerEmail>>",
+            "password": "<<providerPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n    \"startTime\": \"14:00:00\",\n    \"endTime\": \"17:00:00\",\n  \t\"gameTableId\": 1\n}"
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Delete Time Slot - (Provider)",
+          "method": "DELETE",
+          "endpoint": "<<baseUrl>>/rest/timeslots/2",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "basic",
+            "username": "<<providerEmail>>",
+            "password": "<<providerPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": ""
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Get Time Slots for Table",
+          "method": "GET",
+          "endpoint": "<<baseUrl>>/rest/gametables/1/timeslots",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 200   \npw.test(\"Status code is 200\", () => {\n    pw.expect(pw.response.status).toBe(200);\n});",
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Get Available Time Slots",
+          "method": "GET",
+          "endpoint": "<<baseUrl>>/rest/venues/1/timeslots/available",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 200   \npw.test(\"Status code is 200\", () => {\n    pw.expect(pw.response.status).toBe(200);\n});",
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        }
+      ],
+      "auth": {
+        "authType": "inherit",
+        "authActive": true
+      },
+      "headers": [],
+      "variables": [],
+      "description": null
+    },
+    {
+      "v": 11,
+      "name": "07. Reservations",
+      "folders": [],
+      "requests": [
+        {
+          "v": "17",
+          "name": "Create Reservation 1 - (Player)",
+          "method": "POST",
+          "endpoint": "<<baseUrl>>/rest/reservations",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 201 \npw.test(\"Status code is 201\", () => {\n    pw.expect(pw.response.status).toBe(201);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<playerEmail>>",
+            "password": "<<playerPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n    \"date\": \"2025-10-25\",\n    \"timeSlotIds\": [1]\n}"
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": "User ID 3 assumed for Player (registered second)."
+        },
+        {
+          "v": "17",
+          "name": "Create Reservation 2 - (Player)",
+          "method": "POST",
+          "endpoint": "<<baseUrl>>/rest/reservations",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 201 \npw.test(\"Status code is 201\", () => {\n    pw.expect(pw.response.status).toBe(201);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<playerEmail>>",
+            "password": "<<playerPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n    \"date\": \"2025-10-25\",\n    \"timeSlotIds\": [3]\n}"
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": "User ID 3 assumed for Player (registered second)."
+        },
+        {
+          "v": "17",
+          "name": "Create Reservation 3 - (Player)",
+          "method": "POST",
+          "endpoint": "<<baseUrl>>/rest/reservations",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 201 \npw.test(\"Status code is 201\", () => {\n    pw.expect(pw.response.status).toBe(201);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<playerEmail>>",
+            "password": "<<playerPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n    \"date\": \"2025-10-25\",\n    \"timeSlotIds\": [4]\n}"
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": "User ID 3 assumed for Player (registered second)."
+        },
+        {
+          "v": "17",
+          "name": "Confirm Reservation 1 - (Provider)",
+          "method": "PUT",
+          "endpoint": "<<baseUrl>>/rest/reservations/1/confirm",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 200   \npw.test(\"Status code is 200\", () => {\n    pw.expect(pw.response.status).toBe(200);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<providerEmail>>",
+            "password": "<<providerPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Complete Reservation 1 - (Provider)",
+          "method": "PUT",
+          "endpoint": "<<baseUrl>>/rest/reservations/1/complete",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 200   \npw.test(\"Status code is 200\", () => {\n    pw.expect(pw.response.status).toBe(200);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<providerEmail>>",
+            "password": "<<providerPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Cancel Reservation 2 - (Player)",
+          "method": "PUT",
+          "endpoint": "<<baseUrl>>/rest/reservations/2/cancel",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 200   \npw.test(\"Status code is 200\", () => {\n    pw.expect(pw.response.status).toBe(200);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<playerEmail>>",
+            "password": "<<playerPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Reject Reservation 3 - (Provider)",
+          "method": "PUT",
+          "endpoint": "<<baseUrl>>/rest/reservations/3/cancel",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 200   \npw.test(\"Status code is 200\", () => {\n    pw.expect(pw.response.status).toBe(200);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<providerEmail>>",
+            "password": "<<providerPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Delete Reservation 3 - (Admin)",
+          "method": "DELETE",
+          "endpoint": "<<baseUrl>>/rest/reservations/3",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 204 \npw.test(\"Status code is 204\", () => {\n    pw.expect(pw.response.status).toBe(204);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<adminEmail>>",
+            "password": "<<adminPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Get Reservations By User - (Player)",
+          "method": "GET",
+          "endpoint": "<<baseUrl>>/rest/reservations/user/2",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 200   \npw.test(\"Status code is 200\", () => {\n    pw.expect(pw.response.status).toBe(200);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<playerEmail>>",
+            "password": "<<playerPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        }
+      ],
+      "auth": {
+        "authType": "inherit",
+        "authActive": true
+      },
+      "headers": [],
+      "variables": [],
+      "description": null
+    },
+    {
+      "v": 11,
+      "name": "08. Ratings",
+      "folders": [],
+      "requests": [
+        {
+          "v": "17",
+          "name": "Create Rating 1 - (Admin, Provider, Player)",
+          "method": "POST",
+          "endpoint": "<<baseUrl>>/rest/ratings",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 201 \npw.test(\"Status code is 201\", () => {\n    pw.expect(pw.response.status).toBe(201);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<playerEmail>>",
+            "password": "<<playerPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n    \"raterId\": 2,\n    \"ratedId\": 4,\n  \t\"reservationId\": 1,\n    \"score\": 5,\n    \"comment\": \"Great venue!\"\n}"
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Create Rating 2 - (Admin, Provider, Player)",
+          "method": "POST",
+          "endpoint": "<<baseUrl>>/rest/ratings",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 201 \npw.test(\"Status code is 201\", () => {\n    pw.expect(pw.response.status).toBe(201);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<playerEmail>>",
+            "password": "<<playerPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n    \"raterId\": 2,\n    \"ratedId\": 4,\n  \t\"reservationId\": 2,\n    \"score\": 1,\n    \"comment\": \"Horrible!\"\n}"
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Update Rating 1 - (Admin, Provider, Player)",
+          "method": "PUT",
+          "endpoint": "<<baseUrl>>/rest/ratings/2/4/1",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 200   \npw.test(\"Status code is 200\", () => {\n    pw.expect(pw.response.status).toBe(200);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<adminEmail>>",
+            "password": "<<adminPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n    \"score\": 3,\n    \"comment\": \"Lowkey mid!\"\n}"
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Delete Rating 2 - (Admin, Provider, Player)",
+          "method": "DELETE",
+          "endpoint": "<<baseUrl>>/rest/ratings/2/4/2",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 204     \npw.test(\"Status code is 204\", () => {\n    pw.expect(pw.response.status).toBe(204);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<playerEmail>>",
+            "password": "<<playerPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": ""
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Get Ratings by Me - (Player)",
+          "method": "GET",
+          "endpoint": "<<baseUrl>>/rest/ratings/my",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 200   \npw.test(\"Status code is 200\", () => {\n    pw.expect(pw.response.status).toBe(200);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<playerEmail>>",
+            "password": "<<playerPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Get Ratings on User",
+          "method": "GET",
+          "endpoint": "<<baseUrl>>/rest/ratings/4",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 200   \npw.test(\"Status code is 200\", () => {\n    pw.expect(pw.response.status).toBe(200);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<playerEmail>>",
+            "password": "<<playerPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Get Ratings by Venue",
+          "method": "GET",
+          "endpoint": "<<baseUrl>>/rest/ratings/venue/1",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "// Check status code is 200   \npw.test(\"Status code is 200\", () => {\n    pw.expect(pw.response.status).toBe(200);\n});",
+          "auth": {
+            "authType": "basic",
+            "username": "<<playerEmail>>",
+            "password": "<<playerPassword>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {},
+          "description": null
+        }
+      ],
+      "auth": {
+        "authType": "inherit",
+        "authActive": true
+      },
+      "headers": [],
+      "variables": [],
+      "description": null
+    },
+    {
+      "v": 11,
+      "name": "99. Business Logic Scenarios",
+      "folders": [
+        {
+          "v": 11,
+          "name": "Setup",
+          "folders": [],
+          "requests": [],
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "headers": [],
+          "variables": [],
+          "description": null
+        },
+        {
+          "v": 11,
+          "name": "Scenario: Full Reservation Cycle",
+          "folders": [],
+          "requests": [
+            {
+              "v": "17",
+              "name": "1. Find Venue",
+              "method": "GET",
+              "endpoint": "<<baseUrl>>/rest/venues",
+              "params": [],
+              "headers": [],
+              "preRequestScript": "",
+              "testScript": "",
+              "auth": {
+                "authType": "inherit",
+                "authActive": true
+              },
+              "body": {
+                "contentType": null,
+                "body": null
+              },
+              "requestVariables": [],
+              "responses": {},
+              "description": "Browse venues publicly"
+            },
+            {
+              "v": "17",
+              "name": "2. Get Tables",
+              "method": "GET",
+              "endpoint": "<<baseUrl>>/rest/venues/<<scenVenueId>>/gametables",
+              "params": [],
+              "headers": [],
+              "preRequestScript": "",
+              "testScript": "",
+              "auth": {
+                "authType": "inherit",
+                "authActive": true
+              },
+              "body": {
+                "contentType": null,
+                "body": null
+              },
+              "requestVariables": [],
+              "responses": {},
+              "description": null
+            },
+            {
+              "v": "17",
+              "name": "3. Get Slots",
+              "method": "GET",
+              "endpoint": "<<baseUrl>>/rest/gametables/<<scenTableId>>/timeslots",
+              "params": [],
+              "headers": [],
+              "preRequestScript": "",
+              "testScript": "",
+              "auth": {
+                "authType": "inherit",
+                "authActive": true
+              },
+              "body": {
+                "contentType": null,
+                "body": null
+              },
+              "requestVariables": [],
+              "responses": {},
+              "description": null
+            },
+            {
+              "v": "17",
+              "name": "4. Make Reservation",
+              "method": "POST",
+              "endpoint": "<<baseUrl>>/rest/reservations",
+              "params": [],
+              "headers": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "active": true,
+                  "description": ""
+                }
+              ],
+              "preRequestScript": "",
+              "testScript": "",
+              "auth": {
+                "authType": "basic",
+                "username": "player@test.com",
+                "password": "password",
+                "authActive": true
+              },
+              "body": {
+                "contentType": "application/json",
+                "body": "{\n    \"userId\": 3,\n    \"date\": \"2025-11-01\",\n    \"timeSlotIds\": [<<scenSlotId>>]\n}"
+              },
+              "requestVariables": [],
+              "responses": {},
+              "description": null
+            },
+            {
+              "v": "17",
+              "name": "5. Confirm",
+              "method": "POST",
+              "endpoint": "<<baseUrl>>/rest/reservations/<<scenResId>>/confirm",
+              "params": [],
+              "headers": [],
+              "preRequestScript": "",
+              "testScript": "",
+              "auth": {
+                "authType": "basic",
+                "username": "provider@test.com",
+                "password": "password",
+                "authActive": true
+              },
+              "body": {
+                "contentType": null,
+                "body": null
+              },
+              "requestVariables": [],
+              "responses": {},
+              "description": null
+            },
+            {
+              "v": "17",
+              "name": "6. Verify Confirmed",
+              "method": "GET",
+              "endpoint": "<<baseUrl>>/rest/reservations/<<scenResId>>",
+              "params": [],
+              "headers": [],
+              "preRequestScript": "",
+              "testScript": "",
+              "auth": {
+                "authType": "basic",
+                "username": "player@test.com",
+                "password": "password",
+                "authActive": true
+              },
+              "body": {
+                "contentType": null,
+                "body": null
+              },
+              "requestVariables": [],
+              "responses": {},
+              "description": null
+            }
+          ],
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "headers": [],
+          "variables": [],
+          "description": null
+        }
+      ],
+      "requests": [],
+      "auth": {
+        "authType": "inherit",
+        "authActive": true
+      },
+      "headers": [],
+      "variables": [],
+      "description": null
+    }
+  ],
+  "requests": [],
+  "auth": {
+    "authType": "none",
+    "authActive": true
+  },
+  "headers": [],
+  "variables": [
+    {
+      "key": "baseUrl",
+      "initialValue": "http://localhost:8080",
+      "currentValue": "",
+      "secret": false
+    },
+    {
+      "key": "adminEmail",
+      "initialValue": "admin@test.com",
+      "currentValue": "",
+      "secret": true
+    },
+    {
+      "key": "adminPassword",
+      "initialValue": "admin",
+      "currentValue": "",
+      "secret": true
+    },
+    {
+      "key": "providerEmail",
+      "initialValue": "provider@test.com",
+      "currentValue": "",
+      "secret": true
+    },
+    {
+      "key": "providerPassword",
+      "initialValue": "provider",
+      "currentValue": "",
+      "secret": true
+    },
+    {
+      "key": "playerEmail",
+      "initialValue": "player@test.com",
+      "currentValue": "",
+      "secret": true
+    },
+    {
+      "key": "playerPassword",
+      "initialValue": "player",
+      "currentValue": "",
+      "secret": true
+    }
+  ],
+  "description": "REST API testovací kolekce rozdělená podle Controllerů, včetně sekce pro Business Scénáře."
+}
